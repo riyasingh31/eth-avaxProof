@@ -1,0 +1,43 @@
+//SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract SimpleExample {
+    uint256 private value;
+
+    // Function to set the value
+    function setValue(uint256 newValue) public {
+
+        require(newValue > 0, "Value must be greater than zero");
+        require(newValue <= 100, "Value must be less than or equal to 100");
+        value = newValue;
+    }
+
+    function getValue() public view returns (uint256) {
+        return value;
+    }
+
+    }
+
+contract ExampleContract {
+    // Declare a state variable of type uint256 and initialize it with a default value of 10
+    uint256 public value = 10;
+
+    // Function to demonstrate require usage
+    function requireExample() public view {
+        
+        require(value != 0, "Value must be non-zero");
+    }
+
+    function assertExample() public view {
+        // Use assert to ensure the stored value is not zero
+        assert(value != 0);
+    }
+
+    function revertExample(uint256 testValue) public pure {
+        require(testValue != 0, "testValue cannot be zero");
+        if (testValue == 0) {
+            revert("testValue cannot be zero");
+        }
+    }
+}
+
